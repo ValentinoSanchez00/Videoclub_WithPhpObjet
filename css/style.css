@@ -1,0 +1,67 @@
+.body{
+    color: white;
+    background-image: url(../assets/images/fondo.jfif);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+
+.contenedor{
+    margin: 0 auto;
+    max-width: 1080px;
+    border-radius: 10px;
+    color: black;
+}
+.h1{
+    margin: 0 auto;
+    text-align: center;
+    padding: 1rem;
+    background-color: red;
+    font-size: 5rem;
+    box-shadow: -1px 10px 5px 0px rgba(0,0,0,0.75);
+    background-color: #8a795d;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+    padding: 1rem;
+   
+    border:1px solid black;
+    border-radius: 5px; 
+    height: 600px;
+    background-color: #f0ecd9;
+    box-shadow: -1px 10px 5px 0px rgba(0,0,0,0.75);
+    color: black;
+}
+.main__title{
+    background-color: #8a795d;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 3.5rem;
+    padding: 1rem;
+}
+.main__form{
+    border: 1px solid black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius:400px ;
+    color: white;
+    background-color: black;
+}
+.boton{
+    width: 300px;
+    background-color: white !important;
+    color: black !important;
+}
