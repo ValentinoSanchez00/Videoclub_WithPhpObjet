@@ -36,7 +36,7 @@
    
     border:1px solid black;
     border-radius: 5px; 
-    height: 600px;
+    
     background-color: #f0ecd9;
     box-shadow: -1px 10px 5px 0px rgba(0,0,0,0.75);
     color: black;
@@ -64,4 +64,22 @@
     width: 300px;
     background-color: white !important;
     color: black !important;
+}
+.footer__link{
+    margin: 1rem;
+    color: brown;
+}
+.contenedor__pelis{
+    border: 1px solid black;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    
+}
+.todaslaspelis{
+    display: flex;
+    flex-wrap: wrap;
 }
