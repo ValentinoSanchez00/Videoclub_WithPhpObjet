@@ -12,7 +12,7 @@
         ?>
         
         <h1 class="h1">Bienvenido</h1>
-        <main class="main">
+        <main class="main  ancho">
             <h2 class="main__title">INICIA SESIÓN</h2>
             <form class="main__form" method="post" action="./pages/peliculas.php">
                     <?php

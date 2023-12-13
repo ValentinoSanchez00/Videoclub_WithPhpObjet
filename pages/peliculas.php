@@ -5,34 +5,37 @@ include '../lib/model/actor.php';
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $_POST["user"];
-    $contraseña = $_POST["password"];
+    $contraseña = hash("sha256", $_POST["password"]);
 
     $cadena_conexion = 'mysql:dbname=videoclub;host=127.0.0.1';
     $usuariobd = 'root';
     $clavebd = '';
 
-    $contraseña = $_POST['password'];
-
     try {
         // Se crea la conexión con la base de datos
         $bd = new PDO($cadena_conexion, $usuariobd, $clavebd);
-        $sql = 'SELECT username,password FROM usuarios where username="' . $usuario . '"and password="' . $contraseña . '"';
-        $user = $bd->query($sql);
+        $sql = 'SELECT * FROM usuarios where username=:username and password=:password';
+        $user = $bd->prepare($sql);
+        $user->execute(array('username' => $usuario, 'password' => $contraseña));
         if ($user->rowCount() > 0) {
 
             $_SESSION["nombre"] = $_POST["user"];
+
+            foreach ($user as $usuario) {
+                $nuevousuario = new Usuario($usuario["id"], $usuario["username"], $usuario["password"], $usuario["rol"]);
+            }
         } else {
-            header("Location../index.php");
+            header("Location: ../index.php");
         }
     } catch (Exception $e) {
         echo "Error al hacer la consulta: " . $e->getMessage();
     }
 } else {
-    header("Location../index.php");
+    header("Location: ../index.php");
 }
 
 if (!$_SESSION["nombre"]) {
-    header("Location../index.php");
+    header("Location: ../index.php");
 }
 
 $arraydepelis = array();
@@ -63,26 +66,55 @@ foreach ($peliculas as $linea) {
 
             <div class="todaslaspelis">
                 <?php
-               
-               
                 foreach ($arraydepelis as $peli) {
                     ?>
                     <div class="contenedor__pelis">
                         <p><?php echo $peli->getParametros("titulo") ?> </p>
-                        <p><?php echo $peli->getParametros("cartel") ?></p>
+
+                        <img class="imagen" src="../assets/images/<?php echo $peli->getParametros("cartel") ?>" alt="alt"/>
                         <p><?php echo $peli->getParametros("anyo") ?></p>
+                        <p>Actores:</p>
+                        <?php
+                        $sql3 = 'SELECT * FROM actores where id=:id';
+                        $actor = $bd->prepare($sql3);
+                        $actor->execute(array('id' => $peli->getParametros("id")));
+                        foreach ($actor as $linea) {
+                            ?>
+                            <p><?php echo $linea['nombre'] . " " . $linea['apellidos']; ?></p>
+                            <img class="img_actor" src="../assets/images/<?php echo $linea['fotografia']; ?>" alt="alt"/>
+
+                            <?php
+                        }
+                        ?>
+
+
+
                     </div>
 
                     <?php
-                  
                 }
                 ?>
+                <div class="contenedor_botones"> 
+                    <a class="footer__link" href="../pages/cerrar.php">Cerrar sesión</a>
+                    <?php
+                    if ($nuevousuario->getRol() == "1") {       
+                    ?>
+                     <a class="footer__link" href="../pages/cerrar.php">Modificar</a>
+                      <a class="footer__link" href="../pages/cerrar.php">Borrar</a>
+                    
+                    </div>
+                    <?php
+                    }
+                    ?>
 
-            </div>
-            
+
+
+                </div>
+
 
         </main>
-        <a class="footer__link" href="../index.php">Cerrar sesión</a>
+
+
 
     </body>
 </html>

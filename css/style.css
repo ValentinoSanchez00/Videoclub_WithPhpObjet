@@ -77,9 +77,30 @@
     justify-content: center;
     align-items: center;
     margin: 1rem;
+    width: 400px;
     
 }
 .todaslaspelis{
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
+}
+.ancho{
+    height: 700px;
+}
+.imagen{
+    width: 300px;
+}
+.img_actor{
+    width: 100px;
+}
+.contenedor_botones{
+    border: 1px solid black;
+    padding: 1rem;
+    border-radius: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
 }
