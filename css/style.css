@@ -68,6 +68,11 @@
 .footer__link{
     margin: 1rem;
     color: brown;
+    text-decoration: none;
+    transition: all 1s;
+}
+.footer__link:hover{
+    color: black;
 }
 .contenedor__pelis{
     border: 1px solid black;
@@ -77,7 +82,7 @@
     justify-content: center;
     align-items: center;
     margin: 1rem;
-    width: 400px;
+   
     
 }
 .todaslaspelis{
@@ -89,12 +94,13 @@
     height: 700px;
 }
 .imagen{
-    width: 300px;
+    width: 200px;
 }
 .img_actor{
     width: 100px;
 }
 .contenedor_botones{
+    margin: 1rem;
     border: 1px solid black;
     padding: 1rem;
     border-radius: 5px;
@@ -103,4 +109,7 @@
     justify-content: space-around;
     align-items: center;
     
+}
+.borrarpeli{
+    color: red;
 }

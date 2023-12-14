@@ -86,29 +86,30 @@ foreach ($peliculas as $linea) {
                             <p><?php echo $actor->getNombre() . " " . $actor->getApellido(); ?></p>
                             <img class="img_actor" src="../assets/images/<?php echo $actor->getFotografia(); ?>" alt="alt"/>
 
+
+                            <?php
+                            if ($nuevousuario->getRol() == "1") {
+                                ?>
+                                <div class="contenedor_botones"> 
+                                <a class="footer__link" href="../pages/cerrar.php">Modificar</a>
+                                <a class="footer__link" href="../pages/borrar.php?id=<?php echo $peli->getParametros("id"); ?>">Borrar</a>
+                                </div>
+                            </div>
                             <?php
                         }
-                        ?>
-
-
-
-                    </div>
-
-                    <?php
+                    }
                 }
-                ?>
-                <div class="contenedor_botones"> 
-                    <a class="footer__link" href="../pages/cerrar.php">Cerrar sesión</a>
-                    <?php
-                    if ($nuevousuario->getRol() == "1") {
-                        ?>
-                        <a class="footer__link" href="../pages/cerrar.php">Modificar</a>
-                        <a class="footer__link" href="../pages/cerrar.php">Borrar</a>
+                    ?>
 
-                    </div>
-                    <?php
-                }
-                ?>
+
+
+             </div>
+
+           
+            <div class="contenedor_botones"> 
+                                                     
+                <a class="footer__link" href="../pages/cerrar.php">Cerrar sesión</a>
+
 
 
 
