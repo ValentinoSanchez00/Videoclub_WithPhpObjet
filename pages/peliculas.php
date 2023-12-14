@@ -66,6 +66,7 @@ foreach ($peliculas as $linea) {
 
             <div class="todaslaspelis">
                 <?php
+                $arraydeactores = array();
                 foreach ($arraydepelis as $peli) {
                     ?>
                     <div class="contenedor__pelis">
@@ -79,9 +80,11 @@ foreach ($peliculas as $linea) {
                         $actor = $bd->prepare($sql3);
                         $actor->execute(array('id' => $peli->getParametros("id")));
                         foreach ($actor as $linea) {
+                            $actor = new Actor($linea['id'], $linea['nombre'], $linea['apellidos'], $linea['fotografia']);
+                            array_push($arraydeactores, $actor);
                             ?>
-                            <p><?php echo $linea['nombre'] . " " . $linea['apellidos']; ?></p>
-                            <img class="img_actor" src="../assets/images/<?php echo $linea['fotografia']; ?>" alt="alt"/>
+                            <p><?php echo $actor->getNombre() . " " . $actor->getApellido(); ?></p>
+                            <img class="img_actor" src="../assets/images/<?php echo $actor->getFotografia(); ?>" alt="alt"/>
 
                             <?php
                         }
@@ -97,19 +100,19 @@ foreach ($peliculas as $linea) {
                 <div class="contenedor_botones"> 
                     <a class="footer__link" href="../pages/cerrar.php">Cerrar sesión</a>
                     <?php
-                    if ($nuevousuario->getRol() == "1") {       
-                    ?>
-                     <a class="footer__link" href="../pages/cerrar.php">Modificar</a>
-                      <a class="footer__link" href="../pages/cerrar.php">Borrar</a>
-                    
+                    if ($nuevousuario->getRol() == "1") {
+                        ?>
+                        <a class="footer__link" href="../pages/cerrar.php">Modificar</a>
+                        <a class="footer__link" href="../pages/cerrar.php">Borrar</a>
+
                     </div>
                     <?php
-                    }
-                    ?>
+                }
+                ?>
 
 
 
-                </div>
+            </div>
 
 
         </main>
