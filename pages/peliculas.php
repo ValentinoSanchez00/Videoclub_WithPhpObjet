@@ -37,14 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if (!$_SESSION["nombre"]) {
     header("Location: ../index.php");
 }
-
-$arraydepelis = array();
-$sql2 = 'SELECT * FROM peliculas ';
-$peliculas = $bd->query($sql2);
-foreach ($peliculas as $linea) {
-    $pelicula = new Pelicula($linea["id"], $linea["titulo"], $linea["genero"], $linea["pais"], $linea["anyo"], $linea["cartel"]);
-    array_push($arraydepelis, $pelicula);
-}
 ?>
 
 
@@ -66,6 +58,14 @@ foreach ($peliculas as $linea) {
 
             <div class="todaslaspelis">
                 <?php
+                $arraydepelis = array();
+                $sql2 = 'SELECT * FROM peliculas ';
+                $peliculas = $bd->query($sql2);
+                foreach ($peliculas as $linea) {
+                    $pelicula = new Pelicula($linea["id"], $linea["titulo"], $linea["genero"], $linea["pais"], $linea["anyo"], $linea["cartel"]);
+                    array_push($arraydepelis, $pelicula);
+                }
+
                 $arraydeactores = array();
                 foreach ($arraydepelis as $peli) {
                     ?>
@@ -76,7 +76,7 @@ foreach ($peliculas as $linea) {
                         <p><?php echo $peli->getParametros("anyo") ?></p>
                         <p>Actores:</p>
                         <?php
-                        $sql3 = 'SELECT * FROM actores where id=:id';
+                        $sql3 = 'SELECT * FROM actores where id IN (Select idActor from actuan where idPelicula=:id)';
                         $actor = $bd->prepare($sql3);
                         $actor->execute(array('id' => $peli->getParametros("id")));
                         foreach ($actor as $linea) {
@@ -88,26 +88,27 @@ foreach ($peliculas as $linea) {
 
 
                             <?php
+                            }
                             if ($nuevousuario->getRol() == "1") {
                                 ?>
                                 <div class="contenedor_botones"> 
-                                <a class="footer__link" href="../pages/cerrar.php">Modificar</a>
-                                <a class="footer__link" href="../pages/borrar.php?id=<?php echo $peli->getParametros("id"); ?>">Borrar</a>
+                                    <a class="footer__link" href="../pages/cerrar.php">Modificar</a>
+                                    <a class="footer__link" href="../pages/borrar.php?id=<?php echo $peli->getParametros("id"); ?>">Borrar</a>
                                 </div>
                             </div>
                             <?php
                         }
-                    }
+                    
                 }
-                    ?>
+                ?>
 
 
 
-             </div>
+            </div>
 
-           
+
             <div class="contenedor_botones"> 
-                                                     
+
                 <a class="footer__link" href="../pages/cerrar.php">Cerrar sesión</a>
 
 
