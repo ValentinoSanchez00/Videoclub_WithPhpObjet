@@ -112,3 +112,22 @@
 .borrarpeli{
     color: red;
 }
+.contenedor_actores{
+   
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding:1rem; 
+}
+.cadunodeactores{
+    margin: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    height: 300px;
+     
+    
+}

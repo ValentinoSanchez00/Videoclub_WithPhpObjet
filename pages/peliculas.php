@@ -88,24 +88,46 @@ if (!$_SESSION["nombre"]) {
 
 
                             <?php
-                            }
-                            if ($nuevousuario->getRol() == "1") {
-                                ?>
-                                <div class="contenedor_botones"> 
-                                    <a class="footer__link" href="../pages/cerrar.php">Modificar</a>
-                                    <a class="footer__link" href="../pages/borrar.php?id=<?php echo $peli->getParametros("id"); ?>">Borrar</a>
-                                </div>
-                            </div>
-                            <?php
                         }
-                    
+                        if ($nuevousuario->getRol() == "1") {
+                            ?>
+                            <div class="contenedor_botones"> 
+                                <a class="footer__link" href="../pages/cerrar.php">Modificar</a>
+                                <a class="footer__link" href="../pages/borrar.php?id=<?php echo $peli->getParametros("id"); ?>">Borrar</a>
+                            </div>
+                        </div>
+                        <?php
+                    }
                 }
                 ?>
 
 
 
-            </div>
+            </div
 
+            <?php
+            $sql4 = 'SELECT * FROM actores where id NOT IN (Select idActor from actuan)';
+            $actorenparo = $bd->prepare($sql4);
+            $actorenparo->execute();
+            if ($actorenparo->rowCount() > 0) {
+                ?>
+                <h2 class="h2"> Actores en paro</h2>
+                <div class="contenedor_actores"> 
+                    <?php
+                    foreach ($actorenparo as $linea) {
+                        $actor = new Actor($linea['id'], $linea['nombre'], $linea['apellidos'], $linea['fotografia']);
+                        array_push($arraydeactores, $actor);
+                        ?>
+                        <div class="cadunodeactores">
+                            <p><?php echo $actor->getNombre() . " " . $actor->getApellido(); ?></p>
+                            <img class="img_actor" src="../assets/images/<?php echo $actor->getFotografia(); ?>" alt="alt"/>
+
+                        </div>
+                        <?php
+                    }
+                }
+                ?>
+            </div>
 
             <div class="contenedor_botones"> 
 
