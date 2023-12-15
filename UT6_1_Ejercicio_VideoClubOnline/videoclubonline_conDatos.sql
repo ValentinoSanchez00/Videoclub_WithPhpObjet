@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-12-2023 a las 19:11:27
+-- Tiempo de generación: 15-12-2023 a las 15:38:35
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -49,11 +49,11 @@ INSERT INTO `actores` (`id`, `nombre`, `apellidos`, `fotografia`) VALUES
 (8, 'Jennifer', 'Lawrence', 'jennifer_lawrence.jpg'),
 (9, 'Leonardo', 'DiCaprio', 'leonardo_dicaprio.jpg'),
 (10, 'Emma', 'Stone', 'emma_stone.jpg'),
-(11, 'Scarlett', 'Johansson', 'scarlett_johansson.jpg'),
-(12, 'Brad', 'Pitt', 'brad_pitt.jpg'),
-(13, 'Jennifer', 'Lawrence', 'jennifer_lawrence.jpg'),
-(14, 'Leonardo', 'DiCaprio', 'leonardo_dicaprio.jpg'),
-(15, 'Emma', 'Stone', 'emma_stone.jpg');
+(11, 'Tom', 'Hanks', 'tom_hanks.jpg'),
+(12, 'Meryl', 'Streep', 'meryl_streep.jpg'),
+(13, 'Denzel', 'Washington', 'denzel_washington.jpg'),
+(14, 'Natalie', 'Portman', 'natalie_portman.jpg'),
+(15, 'Will', 'Smith', 'will_smith.jpg');
 
 -- --------------------------------------------------------
 
@@ -133,11 +133,13 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
+-- CONTRASEÑAS CIFRADAS EN SHA256
+
 INSERT INTO `usuarios` (`id`, `username`, `password`, `rol`) VALUES
-(1, 'admin', 'dea75af85f93d7819eab44a0065ce6cd5a5f0c4109bac0b9ff95d8da3cbac1b0', 1),
-(2, 'estornudoman', '005c6755f85f44c95811fafec499daa4493e0d5bb040877dab574de532ad7908', 0),
-(3, 'delegado', '15135897ab9c55c085740ccaf6617733c41c38084a424dd73decd7c21f505c0c', 1),
-(4, 'subdelegado', '8faac3aea2b17360f46eaf8c2cbc910a36a2a5d1b283835f0521abb6c2352f47', 0);
+(1, 'admin', 'dea75af85f93d7819eab44a0065ce6cd5a5f0c4109bac0b9ff95d8da3cbac1b0', 1), -- CONTRASEÑA --> "password_admin"
+(2, 'estornudoman', '005c6755f85f44c95811fafec499daa4493e0d5bb040877dab574de532ad7908', 0), -- CONTRASEÑA --> "password_estornudo"
+(3, 'delegado', '15135897ab9c55c085740ccaf6617733c41c38084a424dd73decd7c21f505c0c', 1), -- CONTRASEÑA --> "password_delegado"
+(4, 'subdelegado', '8faac3aea2b17360f46eaf8c2cbc910a36a2a5d1b283835f0521abb6c2352f47', 0); -- CONTRASEÑA --> "password_subdelegado"
 
 --
 -- Índices para tablas volcadas

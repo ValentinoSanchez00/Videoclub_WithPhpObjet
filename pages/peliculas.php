@@ -71,7 +71,6 @@ if (!$_SESSION["nombre"]) {
                     ?>
                     <div class="contenedor__pelis">
                         <p><?php echo $peli->getParametros("titulo") ?> </p>
-
                         <img class="imagen" src="../assets/images/<?php echo $peli->getParametros("cartel") ?>" alt="alt"/>
                         <p><?php echo $peli->getParametros("anyo") ?></p>
                         <p>Actores:</p>
@@ -79,31 +78,33 @@ if (!$_SESSION["nombre"]) {
                         $sql3 = 'SELECT * FROM actores where id IN (Select idActor from actuan where idPelicula=:id)';
                         $actor = $bd->prepare($sql3);
                         $actor->execute(array('id' => $peli->getParametros("id")));
+
                         foreach ($actor as $linea) {
                             $actor = new Actor($linea['id'], $linea['nombre'], $linea['apellidos'], $linea['fotografia']);
                             array_push($arraydeactores, $actor);
                             ?>
                             <p><?php echo $actor->getNombre() . " " . $actor->getApellido(); ?></p>
                             <img class="img_actor" src="../assets/images/<?php echo $actor->getFotografia(); ?>" alt="alt"/>
-
-
                             <?php
                         }
+
                         if ($nuevousuario->getRol() == "1") {
                             ?>
                             <div class="contenedor_botones"> 
                                 <a class="footer__link" href="../pages/cerrar.php">Modificar</a>
                                 <a class="footer__link" href="../pages/borrar.php?id=<?php echo $peli->getParametros("id"); ?>">Borrar</a>
                             </div>
-                        </div>
-                        <?php
-                    }
+                            <?php
+                        }
+                        ?>
+                    </div>
+                    <?php
                 }
                 ?>
+            </div>
 
 
 
-            </div
 
             <?php
             $sql4 = 'SELECT * FROM actores where id NOT IN (Select idActor from actuan)';
@@ -118,10 +119,11 @@ if (!$_SESSION["nombre"]) {
                         $actor = new Actor($linea['id'], $linea['nombre'], $linea['apellidos'], $linea['fotografia']);
                         array_push($arraydeactores, $actor);
                         ?>
-                        <div class="cadunodeactores">
-                            <p><?php echo $actor->getNombre() . " " . $actor->getApellido(); ?></p>
-                            <img class="img_actor" src="../assets/images/<?php echo $actor->getFotografia(); ?>" alt="alt"/>
-
+                        <div class="container">
+                            <div class="cadunodeactores text-center">
+                                <p><?php echo $actor->getNombre() . " " . $actor->getApellido(); ?></p>
+                                <img class="img_actor" src="../assets/images/<?php echo $actor->getFotografia(); ?>" alt="alt"/>
+                            </div>
                         </div>
                         <?php
                     }
@@ -132,9 +134,6 @@ if (!$_SESSION["nombre"]) {
             <div class="contenedor_botones"> 
 
                 <a class="footer__link" href="../pages/cerrar.php">Cerrar sesión</a>
-
-
-
 
             </div>
 
