@@ -134,4 +134,8 @@
 .cadunodeactores img {
             max-width: 100%;
             height: auto;
-        }
+}
+
+.imagen__modificando{
+    width: 300px;
+}

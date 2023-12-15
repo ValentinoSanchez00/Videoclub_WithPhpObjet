@@ -91,7 +91,7 @@ if (!$_SESSION["nombre"]) {
                         if ($nuevousuario->getRol() == "1") {
                             ?>
                             <div class="contenedor_botones"> 
-                                <a class="footer__link" href="../pages/cerrar.php">Modificar</a>
+                                <a class="footer__link" href="../pages/modificarpelicula.php?id=<?php echo $peli->getParametros("id")?>">Modificar</a>
                                 <a class="footer__link" href="../pages/borrar.php?id=<?php echo $peli->getParametros("id"); ?>">Borrar</a>
                             </div>
                             <?php
@@ -134,7 +134,16 @@ if (!$_SESSION["nombre"]) {
             <div class="contenedor_botones"> 
 
                 <a class="footer__link" href="../pages/cerrar.php">Cerrar sesión</a>
-
+                <?php
+                  if ($nuevousuario->getRol() == "1") {
+                            ?>
+                            
+                               <a class="footer__link" href="../pages/cerrar.php">Añadir Pelicula</a>
+                               
+                           
+                            <?php
+                        }
+                ?>
             </div>
 
 
