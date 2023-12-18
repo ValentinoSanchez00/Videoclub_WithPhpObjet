@@ -16,6 +16,25 @@
             <h2 class="main__title">INICIA SESIÓN</h2>
             <form class="main__form" method="post" action="./pages/peliculas.php">
                     <?php
+                   if (isset($_GET['error'])) {
+                       $error=$_GET['error'];
+                       if ($error==1) {
+                          
+                         ?>
+                        <span class="p-2 rounded background__error">Usuario o Contraseña incorrectos</span>
+                        <?php 
+                       }
+                       
+                       if ($error==2) {
+                           ?>
+                        <span class="p-2 rounded background__error">Error Inesperado</span>
+                        <?php 
+                       }
+                       
+                       
+                   }
+                   
+                   
                    
                     ?>
                     <div class="mt-3 mb-3">

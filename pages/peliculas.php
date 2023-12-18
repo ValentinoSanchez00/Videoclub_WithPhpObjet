@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $nuevousuario = new Usuario($usuario["id"], $usuario["username"], $usuario["password"], $usuario["rol"]);
             }
         } else {
-            header("Location: ../index.php");
+            header("Location: ../index.php?error=1");
         }
     } catch (Exception $e) {
         echo "Error al hacer la consulta: " . $e->getMessage();
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 if (!$_SESSION["nombre"]) {
-    header("Location: ../index.php");
+    header("Location: ../index.php?error=2");
 }
 ?>
 

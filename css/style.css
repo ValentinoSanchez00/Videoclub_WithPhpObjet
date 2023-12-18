@@ -97,6 +97,7 @@
 }
 .img_actor{
     width: 100px;
+    height: 150px; 
 }
 .contenedor_botones{
     margin: 1rem;
