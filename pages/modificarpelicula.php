@@ -55,7 +55,7 @@ $idpeli = $_GET["id"];
                                 <img src="../assets/images/<?php echo $pelicula->getParametros('cartel'); ?>" alt="" class="imagen__modificando">
                             </div>
 
-                            <form action="update.php?modificar=<?php echo $idpeli ?>" method="post">
+                            <form action="actualizar.php?modificar=<?php echo $idpeli ?>" method="post">
                                 <div class="form-group">
                                     <label for="titulo">Título:</label>
                                     <input type="text" class="form-control" id="titulo" name="titulo" value="<?php echo $pelicula->getParametros('titulo'); ?>">
@@ -93,23 +93,6 @@ $idpeli = $_GET["id"];
                 echo "Error al hacer la consulta: " . $e->getMessage();
             }
             ?>
-
-
-
-
-
-            <div class="todaslaspelis">
-
-
-
-
-
-            </div>
-
-
-
-
-
             <div class="contenedor_botones"> 
 
                 <a class="footer__link" href="../pages/peliculas.php">Volver</a>

@@ -138,7 +138,7 @@ if (!$_SESSION["nombre"]) {
                   if ($nuevousuario->getRol() == "1") {
                             ?>
                             
-                               <a class="footer__link" href="../pages/cerrar.php">Añadir Pelicula</a>
+                               <a class="footer__link" href="../pages/insertar.php">Añadir Pelicula</a>
                                
                            
                             <?php
