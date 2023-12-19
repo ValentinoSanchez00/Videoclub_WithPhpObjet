@@ -1,7 +1,9 @@
 <?php
 // Inicia la sesión actual
 session_start();
-
+if (!$_SESSION["nombre"]) {
+    header("Location: ../index.php?error=2");
+}
 // Limpia la información de la sesión actual
 $_SESSION = array();
 

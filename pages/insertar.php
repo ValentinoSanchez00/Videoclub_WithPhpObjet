@@ -6,7 +6,7 @@ include '../lib/model/actor.php';
 session_start();
 
 if (!$_SESSION["nombre"]) {
-    header("Location: ../index.php");
+    header("Location: ../index.php?error=2");
 }
 
 
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $insert_stmt->bindParam(':cartel', $cartel, PDO::PARAM_STR);
         
         $insert_stmt->execute();
-        
+        $bd=null;
         header("Location: ./peliculas.php");
     } catch (PDOException $e) {
         echo "Error al insertar la película: " . $e->getMessage();

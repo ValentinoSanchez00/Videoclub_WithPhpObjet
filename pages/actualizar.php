@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 
 $titulo = $_POST["titulo"];
 $genero = $_POST["genero"];
@@ -16,8 +18,8 @@ try {
         WHERE id=:id";
     $peli = $bd->prepare($sql);
     $peli->execute(array('id' => $_GET["modificar"]));
-    
-    header("Location: ./peliculas.php");
+    $bd=null;
+    header("Location: ../index.php");
     
     
     

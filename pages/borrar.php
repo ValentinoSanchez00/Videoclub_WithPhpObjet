@@ -54,8 +54,8 @@ if (!$_SESSION["nombre"]) {
                     $borrar = $bd->prepare($sql);
                     $borrar->execute(array('id' => $id));
 
-                   
-                    header("Location: ./peliculas.php");
+                   $bd=null;
+                    header("Location: ../index.php");
                     
                 } catch (PDOException $e) {
                     echo "Error: " . $e->getMessage();

@@ -5,7 +5,7 @@ include '../lib/model/actor.php';
 session_start();
 
 if (!$_SESSION["nombre"]) {
-    header("Location: ../index.php");
+    header("Location: ../index.php?error=2");
 }
 
 

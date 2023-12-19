@@ -20,6 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($user->rowCount() > 0) {
 
             $_SESSION["nombre"] = $_POST["user"];
+            $fechaHoraActual = date('Y-m-d H:i:s');
+            setcookie('ultima_visita', $fechaHoraActual, time() + 3600 * 24 * 30);
 
             foreach ($user as $usuario) {
                 $nuevousuario = new Usuario($usuario["id"], $usuario["username"], $usuario["password"], $usuario["rol"]);
@@ -31,11 +33,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error al hacer la consulta: " . $e->getMessage();
     }
 } else {
-    header("Location: ../index.php");
+    header("Location: ../index.php?error=1");
 }
 
 if (!$_SESSION["nombre"]) {
-    header("Location: ../index.php?error=2");
+    header("Location: ../index.php?error=1");
 }
 ?>
 
@@ -59,6 +61,7 @@ if (!$_SESSION["nombre"]) {
             <div class="todaslaspelis">
                 <?php
                 $arraydepelis = array();
+                $bd = new PDO($cadena_conexion, $usuariobd, $clavebd);
                 $sql2 = 'SELECT * FROM peliculas ';
                 $peliculas = $bd->query($sql2);
                 foreach ($peliculas as $linea) {
@@ -66,7 +69,9 @@ if (!$_SESSION["nombre"]) {
                     array_push($arraydepelis, $pelicula);
                 }
 
+
                 $arraydeactores = array();
+                $bd = new PDO($cadena_conexion, $usuariobd, $clavebd);
                 foreach ($arraydepelis as $peli) {
                     ?>
                     <div class="contenedor__pelis">
@@ -88,10 +93,11 @@ if (!$_SESSION["nombre"]) {
                             <?php
                         }
 
+
                         if ($nuevousuario->getRol() == "1") {
                             ?>
                             <div class="contenedor_botones"> 
-                                <a class="footer__link" href="../pages/modificarpelicula.php?id=<?php echo $peli->getParametros("id")?>">Modificar</a>
+                                <a class="footer__link" href="../pages/modificarpelicula.php?id=<?php echo $peli->getParametros("id") ?>">Modificar</a>
                                 <a class="footer__link" href="../pages/borrar.php?id=<?php echo $peli->getParametros("id"); ?>">Borrar</a>
                             </div>
                             <?php
@@ -107,6 +113,8 @@ if (!$_SESSION["nombre"]) {
 
 
             <?php
+            $bd = null;
+            $bd = new PDO($cadena_conexion, $usuariobd, $clavebd);
             $sql4 = 'SELECT * FROM actores where id NOT IN (Select idActor from actuan)';
             $actorenparo = $bd->prepare($sql4);
             $actorenparo->execute();
@@ -135,19 +143,33 @@ if (!$_SESSION["nombre"]) {
 
                 <a class="footer__link" href="../pages/cerrar.php">Cerrar sesión</a>
                 <?php
-                  if ($nuevousuario->getRol() == "1") {
-                            ?>
-                            
-                               <a class="footer__link" href="../pages/insertar.php">Añadir Pelicula</a>
-                               
-                           
-                            <?php
-                        }
+                if ($nuevousuario->getRol() == "1") {
+                    ?>
+
+                    <a class="footer__link" href="../pages/insertar.php">Añadir Pelicula</a>
+
+
+                    <?php
+                }
                 ?>
             </div>
 
 
         </main>
+        <?php
+        if (isset($_COOKIE['ultima_visita'])) {
+
+            $ultimaVisita = $_COOKIE['ultima_visita'];
+            echo 'Última visita: ' . $ultimaVisita;
+        } else {
+            echo 'Es tu primera visita.';
+        }
+        ?>
+
+
+
+
+
 
 
 
