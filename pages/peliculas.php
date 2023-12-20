@@ -138,6 +138,29 @@ if (!$_SESSION["nombre"]) {
                 }
                 ?>
             </div>
+                
+                <?php
+                
+                
+                   if ($nuevousuario->getRol() == "0") {
+                    ?>
+
+                     <form class="ml-5" method="post" action="./send.php?>">
+                        <h2 class="mt-3">Enviar Correo Al Administrador del Videoclub</h2><br>
+                        <label>(Ponga aquí su correo para comprobar que funciona)</label><br>
+                        <input class="w-100" type="text" name="destinatario"> <br>
+                        <label>Asunto</label><br>
+                        <input type="text" name="subjet"> <br>
+                        <label>Mensaje</label><br>
+                        <textarea name="mensaje" rows="4" cols="50"></textarea><br>
+                        <button class="mt-3" type="submit" value="" name="send">Enviar</button>
+                    </form>
+
+                    <?php
+                }
+                ?>
+                 
+                
 
             <div class="contenedor_botones"> 
 
