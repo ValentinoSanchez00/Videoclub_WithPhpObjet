@@ -8,7 +8,7 @@
     </head>
     <body class="contenedor">
         <?php
-       
+       phpinfo();
         ?>
         
         <h1 class="h1">Bienvenido</h1>

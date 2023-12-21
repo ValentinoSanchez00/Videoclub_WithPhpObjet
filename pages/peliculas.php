@@ -46,7 +46,7 @@ if (!$_SESSION["nombre"]) {
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../css/style.css"/>
+        <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <title>Videoclub</title>
     </head>
@@ -76,7 +76,7 @@ if (!$_SESSION["nombre"]) {
                     ?>
                     <div class="contenedor__pelis">
                         <p><?php echo $peli->getParametros("titulo") ?> </p>
-                        <img class="imagen" src="../assets/images/<?php echo $peli->getParametros("cartel") ?>" alt="alt"/>
+                        <img class="imagen" src="../assets/images/<?php echo $peli->getParametros("cartel") ?>" alt="alt">
                         <p><?php echo $peli->getParametros("anyo") ?></p>
                         <p>Actores:</p>
                         <?php
@@ -89,7 +89,7 @@ if (!$_SESSION["nombre"]) {
                             array_push($arraydeactores, $actor);
                             ?>
                             <p><?php echo $actor->getNombre() . " " . $actor->getApellido(); ?></p>
-                            <img class="img_actor" src="../assets/images/<?php echo $actor->getFotografia(); ?>" alt="alt"/>
+                            <img class="img_actor" src="../assets/images/<?php echo $actor->getFotografia(); ?>" alt="alt">
                             <?php
                         }
 
@@ -130,7 +130,7 @@ if (!$_SESSION["nombre"]) {
                         <div class="container">
                             <div class="cadunodeactores text-center">
                                 <p><?php echo $actor->getNombre() . " " . $actor->getApellido(); ?></p>
-                                <img class="img_actor" src="../assets/images/<?php echo $actor->getFotografia(); ?>" alt="alt"/>
+                                <img class="img_actor" src="../assets/images/<?php echo $actor->getFotografia(); ?>" alt="alt">
                             </div>
                         </div>
                         <?php
@@ -145,7 +145,7 @@ if (!$_SESSION["nombre"]) {
                    if ($nuevousuario->getRol() == "0") {
                     ?>
 
-                     <form class="ml-5" method="post" action="./send.php?>">
+                     <form class="ml-5" method="post" action="./send.php">
                         <h2 class="mt-3">Enviar Correo Al Administrador del Videoclub</h2><br>
                         <label>(Ponga aquí su correo para comprobar que funciona)</label><br>
                         <input class="w-100" type="text" name="destinatario"> <br>

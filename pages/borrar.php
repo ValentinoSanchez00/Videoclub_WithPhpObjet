@@ -28,7 +28,7 @@ if (!$_SESSION["nombre"]) {
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../css/style.css"/>
+        <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <title>Videoclub</title>
     </head>
@@ -71,7 +71,7 @@ if (!$_SESSION["nombre"]) {
 
 
                 <div class="contenedor_botones"> 
-                    <a class="footer__link" href="./peliculas.php">volver</a>
+                    <a class="footer__link" href="../index.php">volver</a>
                 </div>
 
             <?php } ?>

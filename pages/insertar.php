@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         $insert_stmt->execute();
         $bd=null;
-        header("Location: ./peliculas.php");
+        header("Location: ../index.php");
     } catch (PDOException $e) {
         echo "Error al insertar la película: " . $e->getMessage();
     }
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../css/style.css"/>
+        <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <title>Videoclub</title>
     </head>
@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                 <div class="form-group">
                                     <label for="genero">Género:</label>
-                                    <input type="text" class="form-control" id="genero" name="genero" value="" placeholder="Género" required" >
+                                    <input type="text" class="form-control" id="genero" name="genero" value="" placeholder="Género" required >
                                 </div>
 
                                 <div class="form-group">
@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                 <button type="submit" class="footer__link">Guardar Cambios</button>
                             </form>
-                        </div>
+                        
                         <?php
                     
                 
@@ -112,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ?>
             <div class="contenedor_botones"> 
 
-                <a class="footer__link" href="../pages/peliculas.php">Volver</a>
+                <a class="footer__link" href="../index.php">Volver</a>
 
             </div>
 
